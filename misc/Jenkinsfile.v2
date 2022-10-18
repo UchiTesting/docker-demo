@@ -23,9 +23,10 @@ node {
      }                                   
      mysql.stop()
    }                                     
-   stage('docker build/push') {            
+   stage('docker build/push') {        
+    // The 2nd param dockerhub refers to the credentials available in Jenkins    
      docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
-       def app = docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.').push()
+       def app = docker.build("uchitesting/docker-nodejs-demo:${commit_id}", '.').push()
      }                                     
    }                                       
 }                                          
